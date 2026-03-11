@@ -1,16 +1,22 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Shield, MapPin, Route, AlertTriangle } from 'lucide-react';
-import { Show, UserButton } from '@clerk/react';
+import { Show, useUser } from '@clerk/react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SiteHeader from '../components/Layout/SiteHeader';
-import SiteFooter from '../components/Layout/SiteFooter';
 export default function LandingPage() {
   const [activeStep, setActiveStep] = useState(1);
+  const navigate = useNavigate();
+  const { isSignedIn } = useUser();
+
   const handleSOS = () => {
     alert("SOS Activated! Locating nearest police station...");
+  };
+
+  const handleMapLaunch = () => {
+    navigate(isSignedIn ? '/map' : '/sign-in');
   };
 
   useGSAP(() => {
@@ -136,9 +142,9 @@ export default function LandingPage() {
           </p>
           
           <div className="hero-fade-up lp-hero__buttons" style={{ display: 'flex', gap: '12px', marginBottom: '48px' }}>
-            <Link to="/map" className="btn-primary-landing" style={{ padding: '14px 28px', background: 'var(--ink)', color: 'var(--white)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <button type="button" onClick={handleMapLaunch} className="btn-primary-landing" style={{ padding: '14px 28px', background: 'var(--ink)', color: 'var(--white)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px', border: 'none', cursor: 'pointer' }}>
               🗺 Open Live Map
-            </Link>
+            </button>
             <Link to="/community" className="btn-secondary-landing" style={{ padding: '14px 28px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--ink)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
               👥 Community
             </Link>
@@ -447,9 +453,9 @@ export default function LandingPage() {
               <h3 style={{ fontSize: '28px', fontWeight: 600, marginBottom: '16px' }}>Your personal safety dashboard</h3>
               <p style={{ color: 'var(--muted2)', fontSize: '15px', lineHeight: 1.6, marginBottom: '32px', maxWidth: '300px' }}>Access live maps, check real-time routes, and use quick SOS actions.</p>
               
-              <Link to="/map" style={{ display: 'inline-flex', padding: '14px 28px', background: 'var(--gold)', color: 'white', borderRadius: '14px', fontSize: '15px', fontWeight: 600, textDecoration: 'none', alignItems: 'center', gap: '8px' }}>
+              <button type="button" onClick={handleMapLaunch} style={{ display: 'inline-flex', padding: '14px 28px', background: 'var(--gold)', color: 'white', borderRadius: '14px', fontSize: '15px', fontWeight: 600, textDecoration: 'none', alignItems: 'center', gap: '8px', border: 'none', cursor: 'pointer' }}>
                 🗺 Open Live Map →
-              </Link>
+              </button>
               
               <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--green)' }}>
                 ● Live safety data active
