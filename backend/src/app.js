@@ -3,6 +3,7 @@ const cors = require('cors');
 const { pool } = require('./db');
 const roadsRouter = require('./routes/roads');
 const policeRouter = require('./routes/police');
+const communityRouter = require('./routes/community');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
@@ -24,6 +25,7 @@ app.get('/health', async (_req, res) => {
 // ── Routes ──────────────────────────────────────────────────────
 app.use('/api/roads', roadsRouter);
 app.use('/api/police', policeRouter);
+app.use('/api/community', communityRouter);
 
 // ── Global error handler (must be last) ─────────────────────────
 app.use(errorHandler);
