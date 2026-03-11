@@ -7,29 +7,43 @@ const AuthLayout = ({ children, title, subtitle }) => {
     return (
         <div className="font-outfit min-h-screen w-full flex bg-[var(--bg)] text-[var(--ink)] overflow-hidden">
             {/* Left Side: Premium Image (Hidden on Mobile) */}
-            <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+            <div className="hidden lg:flex lg:w-[45%] xl:w-[50%] relative overflow-hidden bg-[#0A0D14]">
                 <img
                     src={authBg}
                     alt="Avaya Background"
-                    className="absolute inset-0 w-full h-full object-cover object-[75%_center] opacity-65"
+                    className="absolute inset-0 w-full h-full object-cover object-[75%_center] opacity-60 mix-blend-luminosity grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg)] via-[#fdf9f3]/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0D14] via-[#0A0D14]/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-[#0A0D14]/50 to-transparent"></div>
 
                 {/* Branding Overlay */}
-                <div className="animate-slide-up-stagger relative z-10 flex flex-col pt-16 pl-16 xl:pl-24 h-full">
-                    <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-[var(--gold-light)] flex items-center justify-center shadow-[0_0_20px_rgba(200,155,60,0.2)]">
-                            <Shield className="text-[var(--gold)]" size={26} strokeWidth={2.5} />
+                <div className="animate-slide-up-stagger relative z-10 flex flex-col items-center justify-center h-full w-full px-10 lg:px-14 xl:px-20 pb-10">
+                    <div className="w-full max-w-md flex flex-col items-center text-center">
+                        {/* Logo */}
+                        <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-2xl bg-[#CBA052]/10 flex items-center justify-center border border-[#CBA052]/20">
+                                <Shield className="text-[#CBA052]" size={30} strokeWidth={2} />
+                            </div>
+                            <h1 className="text-[2.5rem] font-bold tracking-tight text-white">Avaya</h1>
                         </div>
-                        <h1 className="text-4xl font-extrabold flex tracking-tight font-garamond text-[var(--ink)]">Avaya</h1>
+                        
+                        {/* Main Text Content */}
+                        <div className="mt-12 xl:mt-14 w-full">
+                            <div className="inline-flex items-center gap-3 mb-6">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#CBA052]"></div>
+                                <span className="text-[#CBA052] text-sm font-bold tracking-[0.25em] uppercase">Seamless Security Platform</span>
+                            </div>
+                            
+                            <h2 className="text-[3.5rem] xl:text-[4.5rem] font-bold mb-8 leading-[1.05] font-garamond text-white">
+                                Seamless<br />Security,<br />
+                                <span className="text-[#CBA052] italic font-serif tracking-normal block mt-1">Ultimate<br />Confidence.</span>
+                            </h2>
+                            
+                            <p className="text-[1.05rem] text-gray-300 leading-relaxed font-light mx-auto max-w-sm">
+                                Experience the next generation of safe navigation and real-time security alerts. Join the elite network of travelers today.
+                            </p>
+                        </div>
                     </div>
-                    <h2 className="text-[3.5rem] font-bold mt-20 mb-6 leading-[1.1] font-garamond text-[var(--ink)]">
-                        Seamless Security,<br />
-                        <span className="text-[var(--gold)] italic font-serif">Ultimate Confidence.</span>
-                    </h2>
-                    <p className="text-lg text-[var(--muted)] max-w-md leading-relaxed font-light">
-                        Experience the next generation of safe navigation and real-time security alerts. Join the elite network of travelers today.
-                    </p>
                 </div>
             </div>
 
