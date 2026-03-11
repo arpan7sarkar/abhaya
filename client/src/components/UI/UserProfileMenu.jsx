@@ -7,7 +7,7 @@ export default function UserProfileMenu() {
 
     return (
         <div
-            className="panel-card animate-fade-in"
+            className="panel-card animate-fade-in map-user-menu"
             style={{
                 position: 'fixed',
                 top: '16px',
@@ -24,7 +24,7 @@ export default function UserProfileMenu() {
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
             }}
         >
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+            <div className="map-user-menu__info" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
                 <span style={{
                     fontSize: '13px',
                     fontWeight: 600,

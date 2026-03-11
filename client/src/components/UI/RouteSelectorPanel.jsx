@@ -37,7 +37,7 @@ export default function RouteSelectorPanel() {
 
   return (
     <div
-      className="panel-card animate-slide-up"
+      className="panel-card animate-slide-up route-panel"
       style={{
         position: 'fixed',
         top: '90px',
@@ -101,7 +101,7 @@ export default function RouteSelectorPanel() {
       )}
 
       {/* Route cards (accordion) */}
-      <div style={{ overflowY: 'auto', padding: '10px 16px 16px', flex: 1 }}>
+      <div className="route-panel__body" style={{ overflowY: 'auto', padding: '10px 16px 16px', flex: 1 }}>
         {allRoutes.map((route, idx) => {
           const meta = route.metadata;
           const avgScore = meta.avgSafetyScore;

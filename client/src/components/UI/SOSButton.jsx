@@ -49,6 +49,7 @@ export default function SOSButton() {
       onClick={handleSOS}
       disabled={loading}
       aria-label="Emergency SOS"
+      className="map-sos-btn"
       style={{
         position: 'fixed',
         bottom: '24px',

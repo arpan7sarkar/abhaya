@@ -185,6 +185,7 @@ export default function SearchBar() {
   return (
     <div
       ref={containerRef}
+      className="map-search"
       style={{
         position: 'fixed',
         top: '20px',
@@ -362,7 +363,7 @@ export default function SearchBar() {
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    maxWidth: '350px',
+                    maxWidth: '100%',
                   }}
                 >
                   {shortenName(item.display_name)}
@@ -375,7 +376,7 @@ export default function SearchBar() {
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    maxWidth: '350px',
+                    maxWidth: '100%',
                   }}
                 >
                   {item.type?.replace(/_/g, ' ')}
