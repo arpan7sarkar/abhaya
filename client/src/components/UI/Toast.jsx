@@ -5,6 +5,7 @@ const typeStyles = {
   success: { bg: 'rgba(34,197,94,0.15)', border: 'rgba(34,197,94,0.4)', color: '#22c55e' },
   error: { bg: 'rgba(239,68,68,0.15)', border: 'rgba(239,68,68,0.4)', color: '#ef4444' },
   info: { bg: 'rgba(59,130,246,0.15)', border: 'rgba(59,130,246,0.4)', color: '#3b82f6' },
+  warning: { bg: 'rgba(182, 0, 0, 0.2)', border: 'rgba(165, 0, 0, 1)', color: '#ff0000ff' },
 };
 
 export default function Toast() {
@@ -19,7 +20,7 @@ export default function Toast() {
       aria-label="Notifications"
       style={{
         position: 'fixed',
-        top: '80px',
+        top: '120px',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 3000,

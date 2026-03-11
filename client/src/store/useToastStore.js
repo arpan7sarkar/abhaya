@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 export const useToastStore = create((set) => ({
   toasts: [],
-  addToast: (message, type = 'info') => {
+  addToast: (message, type = 'info', duration = 5000) => {
     const id = Date.now();
     set((state) => ({
       toasts: [...state.toasts, { id, message, type }],
@@ -11,7 +11,7 @@ export const useToastStore = create((set) => ({
       set((state) => ({
         toasts: state.toasts.filter((t) => t.id !== id),
       }));
-    }, 4000);
+    }, duration);
   },
   dismissToast: (id) =>
     set((state) => ({
