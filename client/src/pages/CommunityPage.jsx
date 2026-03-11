@@ -119,8 +119,8 @@ function NewPostModal({ onClose, onSubmit }) {
   };
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 3000, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-      <div style={{ background: '#fff', borderRadius: '20px', padding: '28px', width: '100%', maxWidth: '520px', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}>
+    <div className="cp-modal-overlay" style={{ position: 'fixed', inset: 0, zIndex: 3000, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+      <div className="cp-modal" style={{ background: '#fff', borderRadius: '20px', padding: '28px', width: '100%', maxWidth: '520px', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
           <h2 style={{ fontSize: '20px', fontWeight: 800, color: '#141414' }}>Create Community Post</h2>
           <button onClick={onClose} style={{ background: '#f7f6f2', border: 'none', borderRadius: '8px', padding: '6px', cursor: 'pointer' }}><X size={18} /></button>
@@ -181,8 +181,8 @@ function CommentsPanel({ postId, currentUser, onClose }) {
   };
 
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 3000, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-      <div style={{ background: '#fff', borderRadius: '20px', width: '100%', maxWidth: '560px', maxHeight: '80vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}>
+    <div className="cp-modal-overlay" style={{ position: 'fixed', inset: 0, zIndex: 3000, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+      <div className="cp-comments-panel" style={{ background: '#fff', borderRadius: '20px', width: '100%', maxWidth: '560px', maxHeight: '80vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 64px rgba(0,0,0,0.15)' }}>
         <div style={{ padding: '20px 24px', borderBottom: '1px solid #e8e6e0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#141414' }}>Comments</h3>
           <button onClick={onClose} style={{ background: '#f7f6f2', border: 'none', borderRadius: '8px', padding: '6px', cursor: 'pointer' }}><X size={18} /></button>
@@ -269,14 +269,14 @@ export default function CommunityPage() {
 
   return (
     <div className="landing-wrapper">
-      <div style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px 80px' }}>
+      <div className="cp-container" style={{ maxWidth: '760px', margin: '0 auto', padding: '48px 24px 80px' }}>
         {/* Header */}
         <div style={{ marginBottom: '36px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', background: '#fff4e0', borderRadius: '20px', marginBottom: '16px' }}>
             <Shield size={14} color="#e8a020" />
             <span style={{ fontSize: '13px', fontWeight: 700, color: '#e8a020' }}>Safety Community</span>
           </div>
-          <h1 className="font-garamond" style={{ fontSize: '40px', fontWeight: 800, color: '#141414', marginBottom: '12px' }}>
+          <h1 className="font-garamond cp-title" style={{ fontSize: '40px', fontWeight: 800, color: '#141414', marginBottom: '12px' }}>
             Community Board
           </h1>
           <p style={{ color: '#6b6b6b', fontSize: '16px', lineHeight: 1.6 }}>
@@ -285,8 +285,8 @@ export default function CommunityPage() {
         </div>
 
         {/* Filters + New Post */}
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '28px', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+        <div className="cp-toolbar" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '28px', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div className="cp-filters" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
             {CATEGORIES.map((cat) => (
               <button key={cat.value} onClick={() => setActiveCategory(cat.value)}
                 style={{

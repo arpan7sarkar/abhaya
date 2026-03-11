@@ -112,20 +112,20 @@ export default function LandingPage() {
       </div>
 
       {/* ── HERO SECTION ── */}
-      <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '64px', overflow: 'hidden' }}>
+      <section className="lp-hero" style={{ position: 'relative', display: 'flex', alignItems: 'center', paddingTop: '80px', paddingBottom: '32px', overflow: 'hidden' }}>
         {/* Right side background */}
-        <div style={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '100%', background: 'linear-gradient(160deg, #f0f7f3, #e1efe8)', zIndex: 0 }}></div>
+        <div className="lp-hero__bg" style={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '100%', background: 'linear-gradient(160deg, #f0f7f3, #e1efe8)', zIndex: 0 }}></div>
         
-        <div style={{ width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '55% 45%', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="lp-hero__grid" style={{ width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '55% 45%', alignItems: 'center', position: 'relative', zIndex: 1 }}>
           
           {/* LEFT COLUMN */}
-          <div style={{ padding: '40px 40px 40px 40px' }}>
+          <div className="lp-hero__left" style={{ padding: '40px 40px 40px 40px' }}>
           <div className="hero-eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: 'var(--gold)', fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '24px' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', animation: 'pulse-ring 1.8s infinite' }}></span>
             WOMEN'S SAFETY NAVIGATION
           </div>
           
-          <h1 className="hero-h1 font-garamond" style={{ fontSize: '78px', fontWeight: 700, lineHeight: 1, letterSpacing: '-1.5px', marginBottom: '24px', color: 'var(--ink)' }}>
+          <h1 className="hero-h1 font-garamond lp-hero__h1" style={{ fontSize: '78px', fontWeight: 700, lineHeight: 1, letterSpacing: '-1.5px', marginBottom: '24px', color: 'var(--ink)' }}>
             <div style={{ overflow: 'hidden' }}><span style={{ display: 'inline-block' }}>Navigate</span></div>
             <div style={{ overflow: 'hidden' }}><span style={{ display: 'inline-block' }}>with <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Confidence,</em></span></div>
             <div style={{ overflow: 'hidden' }}><span style={{ display: 'inline-block' }}>Stay Safe Always</span></div>
@@ -135,16 +135,16 @@ export default function LandingPage() {
             Avaya finds you the safest route — not just the fastest. Real-time safety scores, color-coded roads, and one-tap emergency SOS built for every woman.
           </p>
           
-          <div className="hero-fade-up" style={{ display: 'flex', gap: '12px', marginBottom: '48px' }}>
+          <div className="hero-fade-up lp-hero__buttons" style={{ display: 'flex', gap: '12px', marginBottom: '48px' }}>
             <Link to="/map" className="btn-primary-landing" style={{ padding: '14px 28px', background: 'var(--ink)', color: 'var(--white)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
               🗺 Open Live Map
             </Link>
-            <Link to="/how-it-works" className="btn-secondary-landing" style={{ padding: '14px 28px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--ink)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              ▶ How it works
+            <Link to="/community" className="btn-secondary-landing" style={{ padding: '14px 28px', background: 'transparent', border: '1px solid var(--border)', color: 'var(--ink)', borderRadius: '30px', fontSize: '15px', fontWeight: 500, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              👥 Community
             </Link>
           </div>
           
-          <div className="hero-fade-up" style={{ display: 'flex', gap: '40px', paddingTop: '32px', borderTop: '1px solid var(--border)' }}>
+          <div className="hero-fade-up lp-hero__stats" style={{ display: 'flex', gap: '40px', paddingTop: '32px', borderTop: '1px solid var(--border)' }}>
             <div><div className="font-garamond" style={{ fontSize: '30px', fontWeight: 700 }}>2000+</div><div style={{ fontSize: '13px', color: 'var(--muted)' }}>Routes Mapped</div></div>
             <div><div className="font-garamond" style={{ fontSize: '30px', fontWeight: 700 }}>50K+</div><div style={{ fontSize: '13px', color: 'var(--muted)' }}>Women Protected</div></div>
             <div><div className="font-garamond" style={{ fontSize: '30px', fontWeight: 700 }}>99%</div><div style={{ fontSize: '13px', color: 'var(--muted)' }}>Satisfaction</div></div>
@@ -152,7 +152,7 @@ export default function LandingPage() {
         </div>
 
         {/* RIGHT COLUMN */}
-        <div style={{ padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+        <div className="lp-hero__right" style={{ padding: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
           
           <div className="hero-card-anim hover-lift" style={{ position: 'relative', width: '100%', maxWidth: '340px', background: 'var(--white)', borderRadius: '28px', border: '1px solid var(--border)', boxShadow: '0 24px 48px rgba(0,0,0,0.06)' }}>
             
@@ -240,7 +240,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── MARQUEE STRIP ── */}
-      <div style={{ background: 'var(--cream)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '16px 0', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+      <div className="lp-marquee" style={{ background: 'var(--cream)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '16px 0', overflow: 'hidden', whiteSpace: 'nowrap' }}>
         <div style={{ display: 'inline-block', animation: 'marquee 20s linear infinite' }}>
           {Array(4).fill(['🚨 Emergency SOS', '⭐ Safety Scores', '📍 Point-to-Point Routing', '🔐 Women First', '🛡 Safe Routes']).flat().map((item, i) => (
             <span key={i} style={{ display: 'inline-block', fontSize: '14px', fontWeight: 500, margin: '0 24px', color: 'var(--ink)' }}>{item}</span>
@@ -256,7 +256,7 @@ export default function LandingPage() {
           <h2 className="font-garamond" style={{ fontSize: '48px', fontWeight: 700, color: 'var(--ink)' }}>Built to keep you <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>safe,</em> every single route</h2>
         </div>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
+        <div className="lp-features__grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
           <div className="feature-card-anim landing-feature-card" style={{ border: '1.5px solid var(--border)', borderRadius: '28px', padding: '40px 36px', background: 'var(--white)', position: 'relative', overflow: 'hidden', cursor: 'default' }}>
             <div style={{ width: '100%', height: '3px', background: 'var(--gold-mid)', position: 'absolute', top: 0, left: 0, transform: 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.3s ease' }} className="accent-bar" />
             <div style={{ marginBottom: '24px' }}><MapPin size={32} color="var(--gold)" /></div>
@@ -280,7 +280,7 @@ export default function LandingPage() {
 
       {/* ── HOW IT WORKS ── */}
       <section className="how-it-works-section" style={{ background: 'var(--cream)', padding: '110px 8%' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 400px) 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="lp-hiw__grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 400px) 1fr', gap: '80px', alignItems: 'center' }}>
           <div>
             <h2 className="font-garamond hiw-step" style={{ fontSize: '48px', fontWeight: 700, marginBottom: '48px' }}>How it works</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -438,8 +438,8 @@ export default function LandingPage() {
              <h2 className="font-garamond" style={{ fontSize: '40px', fontWeight: 700 }}>Welcome back, <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>User</em></h2>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-            <div className="welcome-panel" style={{ background: 'var(--ink)', padding: '48px', borderRadius: '32px', color: 'white', position: 'relative', overflow: 'hidden' }}>
+          <div className="lp-welcome__grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
+            <div className="welcome-panel lp-welcome__panel" style={{ background: 'var(--ink)', padding: '48px', borderRadius: '32px', color: 'white', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: '300px', height: '300px', background: 'var(--green)', opacity: 0.1, borderRadius: '50%', top: '-100px', right: '-100px' }}></div>
               <div style={{ position: 'absolute', width: '200px', height: '200px', background: 'var(--gold)', opacity: 0.1, borderRadius: '50%', bottom: '-50px', left: '-50px' }}></div>
               
@@ -456,7 +456,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '16px' }}>
+            <div className="lp-welcome__cards" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '16px' }}>
               {[
                 { label: 'Plan a Route', to: '/map', icon: <Route size={24} color="var(--ink)" /> },
                 { label: 'Safety Tips', to: '/safety-tips', icon: <Shield size={24} color="var(--ink)" /> },
@@ -500,27 +500,6 @@ export default function LandingPage() {
           </button>
         </div>
       </section>
-
-      {/* ── FOOTER ── */}
-      <SiteFooter />
-
-      <style jsx>{`
-        .feature-card-anim:hover {
-           transform: translateY(-6px);
-           box-shadow: 0 16px 32px rgba(0,0,0,0.06);
-           border-color: var(--gold-mid);
-        }
-        .feature-card-anim:hover .accent-bar {
-           transform: scaleX(1);
-        }
-        .welcome-quick-card:hover {
-           transform: translateY(-4px);
-           background: var(--white) !important;
-        }
-        button:hover {
-           transform: scale(1.02);
-        }
-      `}</style>
     </div>
   );
 }

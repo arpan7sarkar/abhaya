@@ -79,7 +79,7 @@ export default function ContactPage() {
     >
       {/* ══ HERO BANNER ══ */}
       <section
-        className="relative overflow-hidden text-center text-white"
+        className="relative overflow-hidden text-center text-white contact-hero-section"
         style={{
           backgroundColor: '#111110',
           paddingTop: '7rem',
@@ -167,14 +167,14 @@ export default function ContactPage() {
       {/* ══ CONTACT CARDS — pulled up to straddle the banner ══ */}
       <div style={{ position: 'relative', zIndex: 20, marginTop: '-56px' }}>
         <div
+          className="contact-info-grid"
           style={{
             maxWidth: '1200px',
             margin: '0 auto',
             padding: '0 1.5rem',
-            display: 'flex',
-            flexWrap: 'wrap',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '1.25rem',
-            justifyContent: 'center',
           }}
         >
           {contactInfo.map(({ icon: Icon, title, detail, sub, color, bg }) => (
@@ -189,8 +189,7 @@ export default function ContactPage() {
                 padding: '2rem',
                 boxShadow: '0 10px 36px rgba(0,0,0,0.07)',
                 transition: 'transform 0.2s, box-shadow 0.2s',
-                width: '310px',
-                flexShrink: 0,
+                width: '100%',
               }}
             >
               <div
@@ -230,6 +229,7 @@ export default function ContactPage() {
 
       {/* ══ FORM SECTION ══ */}
       <section
+        className="contact-form-section"
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
@@ -241,13 +241,11 @@ export default function ContactPage() {
         <div
           style={{
             display: 'flex',
-            flexDirection: 'row',
-            gap: '5rem',
             width: '100%',
             maxWidth: '1050px',
             alignItems: 'flex-start',
           }}
-          className="flex-col lg:flex-row"
+          className="flex-col lg:flex-row gap-12 lg:gap-20"
         >
           {/* ── Left: Heading + Emergency ── */}
           <div style={{ flex: '0 0 auto', width: '380px', maxWidth: '100%' }} className="w-full lg:w-auto">
@@ -347,6 +345,7 @@ export default function ContactPage() {
           {/* ── Right: Form ── */}
           <div style={{ flex: '1 1 0', minWidth: 0 }} className="w-full">
             <div
+              className="contact-form-card"
               style={{
                 background: '#fff',
                 border: '1px solid rgba(0,0,0,0.05)',
