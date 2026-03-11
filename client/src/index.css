@@ -271,37 +271,435 @@ body.map-active {
   }
 }
 
-/* ── Site Header Responsive ──────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   SITE HEADER — Base + Responsive
+   ═══════════════════════════════════════════════════════════════════ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 40px;
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid #e8e6e0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+.site-header__logo-text {
+  font-weight: 800;
+  font-size: 26px;
+  color: #141414;
+}
+
+/* Desktop nav */
+.site-header__desktop-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+.site-header__nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6b6b;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.site-header__nav-link:hover {
+  color: #141414;
+}
+.site-header__nav-link--active {
+  font-weight: 600;
+  color: #141414;
+}
+
+/* Right side actions */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* Auth buttons (desktop) */
+.site-header__auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-header__login-btn {
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.site-header__login-btn:hover {
+  color: #141414;
+}
+.site-header__signup-btn {
+  padding: 10px 24px;
+  background: #141414;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+.site-header__signup-btn:hover {
+  background: #2a2a26;
+}
+
+/* User pill */
+.site-header__user-pill {
+  background: #f7f6f2;
+  padding: 4px 16px 4px 4px;
+  border-radius: 30px;
+  border: 1px solid #e8e6e0;
+  display: flex;
+  align-items: center;
+}
+.site-header__user-pill--compact {
+  display: none;
+}
+
+/* Mobile toggle — hidden on desktop */
+.site-header__mobile-toggle {
+  display: none;
+  padding: 8px;
+  background: rgba(0,0,0,0.05);
+  border: none;
+  border-radius: 10px;
+  color: #141414;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.site-header__mobile-toggle:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+/* Mobile overlay */
+.site-header__overlay {
+  display: none;
+}
+
+/* Mobile drawer */
+.site-header__mobile-drawer {
+  display: none;
+}
+
+/* Mobile auth in drawer */
+.site-header__mobile-auth {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid #e8e6e0;
+}
+.site-header__mobile-login {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #141414;
+  text-decoration: none;
+}
+.site-header__mobile-signup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #141414;
+  text-decoration: none;
+  justify-content: center;
+}
+
+/* ── Desktop (≥768px) ───────────────────────── */
 @media (min-width: 768px) {
-  .desktop-nav {
+  .site-header__desktop-nav {
     display: flex !important;
   }
-
-  .mobile-menu-btn {
+  .site-header__mobile-toggle {
+    display: none !important;
+  }
+  .site-header__overlay {
+    display: none !important;
+  }
+  .site-header__mobile-drawer {
     display: none !important;
   }
 }
 
+/* ── Tablet: shrink nav gap ─────────────────── */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .site-header {
+    padding: 14px 24px;
+  }
+  .site-header__desktop-nav {
+    gap: 20px;
+  }
+  .site-header__nav-link {
+    font-size: 14px;
+  }
+  .site-header__signup-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  .site-header__login-btn {
+    font-size: 14px;
+  }
+}
+
+/* ── Mobile (<768px) ────────────────────────── */
 @media (max-width: 767px) {
-  .desktop-nav {
+  .site-header {
+    padding: 12px 16px;
+  }
+  .site-header__logo-text {
+    font-size: 22px;
+  }
+  .site-header__desktop-nav {
     display: none !important;
   }
-
-  .mobile-nav {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  .site-header__auth-buttons {
+    display: none !important;
+  }
+  .site-header__user-pill {
+    display: none !important;
+  }
+  .site-header__user-pill--compact {
+    display: flex !important;
+    align-items: center;
+  }
+  .site-header__mobile-toggle {
+    display: flex !important;
+  }
+  .site-header__overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 199;
+    animation: fade-in 0.2s ease;
+  }
+  .site-header__mobile-drawer {
+    display: flex !important;
+    flex-direction: column;
+    gap: 4px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 85vw);
+    height: 100vh;
+    background: #ffffff;
+    z-index: 200;
+    padding: 72px 20px 32px;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    animation: slide-in-right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .site-header__mobile-link {
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #141414;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .site-header__mobile-link:hover {
+    background: #f7f6f2;
+  }
+  .site-header__mobile-link--active {
+    font-weight: 600;
+    color: #e8a020;
+    background: #fdf9f3;
   }
 }
 
-.footer-link:hover {
-  color: #e8a020 !important;
+/* ── Very small phones (<400px) ─────────────── */
+@media (max-width: 400px) {
+  .site-header {
+    padding: 10px 12px;
+  }
+  .site-header__logo-text {
+    font-size: 20px;
+  }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SITE FOOTER — Base + Responsive
+   ═══════════════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--white);
+  padding: 64px 8% 40px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+.site-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+.site-footer__brand {
+  min-width: 0;
+}
+.site-footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+.site-footer__logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.site-footer__tagline {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 280px;
+  line-height: 1.6;
+}
+.site-footer__col-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+.site-footer__col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.site-footer__link {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-footer__link:hover {
+  color: var(--gold);
+}
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.site-footer__copyright {
+  color: var(--muted);
+  font-size: 13px;
+}
+.site-footer__emergency {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── Tablet (≤1024px) ───────────────────────── */
+@media (max-width: 1024px) {
+  .site-footer {
+    padding: 48px 6% 32px;
+  }
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Mobile (≤768px) ────────────────────────── */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 5% 28px;
+  }
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+  .site-footer__tagline {
+    max-width: 100%;
+  }
+  .site-footer__bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* ── Small Mobile (≤480px) ──────────────────── */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 32px 5% 24px;
+  }
+  .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+  .site-footer__brand {
+    grid-column: auto;
+  }
 }
 
 /* Safe area insets for notched devices */
 @supports (padding: env(safe-area-inset-bottom)) {
-
   .app-shell [style*="bottom: 24px"],
   .app-shell [style*="bottom: 16px"] {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+  .site-footer {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 }
 
@@ -358,4 +756,460 @@ body.map-active {
 .cl-userButtonPopoverActionButton:hover,
 [class*="cl-userButtonPopoverActionButton"]:hover {
   background-color: #f7f6f2 !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS — Full Website
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── TABLET (≤1024px) ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  /* Landing: Hero — single column */
+  .lp-hero__grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .lp-hero__bg {
+    display: none !important;
+  }
+  .lp-hero__left {
+    padding: 40px 6% !important;
+    text-align: center;
+  }
+  .lp-hero__h1 {
+    font-size: 56px !important;
+  }
+  .lp-hero__buttons {
+    justify-content: center !important;
+  }
+  .lp-hero__stats {
+    justify-content: center !important;
+  }
+  .lp-hero__right {
+    padding: 0 6% 40px !important;
+    justify-content: center !important;
+  }
+  .hero-eyebrow {
+    justify-content: center;
+  }
+
+  /* Landing: Features grid — 2 columns */
+  .lp-features__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* Landing: How it works — stack */
+  .lp-hiw__grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  .hiw-phone {
+    display: none !important;
+  }
+
+  /* Landing: Stats — 2x2 */
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+    padding: 60px 6% !important;
+  }
+
+  /* Landing: Welcome/Dashboard — stack */
+  .lp-welcome__grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  /* Landing: SOS Banner — stack */
+  .sos-banner {
+    flex-direction: column !important;
+    text-align: center;
+    padding: 40px 32px !important;
+    margin: 0 5% 60px !important;
+  }
+  .sos-banner-anim {
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  /* Contact: Two-column form */
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Community: Toolbar stacks */
+  .cp-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cp-filters {
+    gap: 6px !important;
+  }
+  .cp-filters button {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+  }
+  .cp-title {
+    font-size: 34px !important;
+  }
+}
+
+
+/* ── MOBILE (≤768px) ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Landing: Hero */
+  .lp-hero {
+    min-height: auto !important;
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+  }
+  .lp-hero__left {
+    padding: 32px 5% !important;
+  }
+  .lp-hero__h1 {
+    font-size: 44px !important;
+  }
+  .lp-hero__right {
+    padding: 0 5% 32px !important;
+  }
+  .lp-hero__buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .lp-hero__buttons a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .lp-hero__stats {
+    flex-wrap: wrap !important;
+    gap: 24px !important;
+  }
+
+  /* Landing: Sections padding */
+  .features-section,
+  .how-it-works-section,
+  .welcome-section {
+    padding: 72px 6% !important;
+  }
+  .features-section h2,
+  .how-it-works-section h2 {
+    font-size: 36px !important;
+  }
+
+  /* Landing: Features — single column */
+  .lp-features__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Landing: How it works phone — hide on mobile */
+  .hiw-phone {
+    display: none !important;
+  }
+
+  /* Landing: Stats */
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 48px 6% !important;
+  }
+  .stat-block .font-garamond {
+    font-size: 40px !important;
+  }
+
+  /* Landing: Welcome */
+  .lp-welcome__panel {
+    padding: 32px !important;
+  }
+
+  /* Landing: Marquee */
+  .lp-marquee span {
+    margin: 0 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* Landing: Floating pills — hide to avoid overflow */
+  .floating-f1,
+  .floating-f2 {
+    display: none !important;
+  }
+
+  /* Safety Tips: Hero */
+  .safety-hero-section {
+    padding: 60px 24px 48px !important;
+  }
+  .safety-hero-section h1 {
+    font-size: 36px !important;
+  }
+  .safety-hero-section p {
+    font-size: 15px !important;
+  }
+
+  /* Safety Tips: Sections */
+  .safety-section {
+    padding: 48px 24px !important;
+  }
+  .safety-section h2 {
+    font-size: 28px !important;
+  }
+
+  /* Safety Tips: Tips grid */
+  .safety-tips-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Safety Tips: Emergency numbers */
+  .emergency-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Safety Tips: CTA banner */
+  .safety-cta-banner {
+    padding: 40px 24px !important;
+    border-radius: 24px !important;
+  }
+  .safety-cta-banner h2 {
+    font-size: 28px !important;
+  }
+
+  /* Contact: Hero */
+  .contact-hero-section {
+    padding: 60px 24px 48px !important;
+  }
+  .contact-hero-section h1 {
+    font-size: 36px !important;
+  }
+
+  /* Contact: Info cards */
+  .contact-info-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Contact: Form section */
+  .contact-form-section {
+    padding: 32px 24px 60px !important;
+  }
+
+  /* Community: Compact layout */
+  .cp-container {
+    padding: 32px 16px 60px !important;
+  }
+  .cp-title {
+    font-size: 30px !important;
+  }
+  .cp-modal-overlay {
+    padding: 12px !important;
+  }
+  .cp-modal {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+  .cp-comments-panel {
+    max-height: 90vh !important;
+    border-radius: 16px !important;
+  }
+
+  /* Map: Components */
+  .map-user-menu__info {
+    display: none !important;
+  }
+  .map-user-menu {
+    border-radius: 50px !important;
+    padding: 6px !important;
+  }
+  .route-panel {
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px 20px 0 0 !important;
+    max-height: 60vh !important;
+  }
+}
+
+
+/* ── SMALL MOBILE (≤480px) ──────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Landing: Hero */
+  .lp-hero {
+    padding-top: 72px !important;
+  }
+  .lp-hero__left {
+    padding: 24px 4% !important;
+  }
+  .lp-hero__h1 {
+    font-size: 36px !important;
+  }
+  .lp-hero__buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .lp-hero__buttons a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .lp-hero__stats {
+    gap: 24px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .lp-hero__stats .font-garamond {
+    font-size: 24px !important;
+  }
+  .lp-hero__right {
+    padding: 0 4% 24px !important;
+  }
+  .hero-card-anim {
+    max-width: 290px !important;
+  }
+
+  /* Landing: Features */
+  .features-section {
+    padding: 56px 5% !important;
+  }
+  .features-section h2 {
+    font-size: 28px !important;
+  }
+  .landing-feature-card {
+    padding: 28px 24px !important;
+  }
+
+  /* Landing: How it works */
+  .how-it-works-section {
+    padding: 56px 5% !important;
+  }
+  .how-it-works-section h2 {
+    font-size: 32px !important;
+  }
+  .hiw-phone {
+    display: none !important;
+  }
+
+  /* Landing: Stats */
+  .stats-section {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+    padding: 40px 5% !important;
+  }
+  .stat-block .font-garamond {
+    font-size: 32px !important;
+  }
+
+  /* Landing: Welcome */
+  .lp-welcome__panel {
+    padding: 24px !important;
+    border-radius: 24px !important;
+  }
+  .lp-welcome__panel h3 {
+    font-size: 22px !important;
+  }
+  .lp-welcome__cards {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .welcome-quick-card {
+    padding: 16px !important;
+    border-radius: 18px !important;
+  }
+
+  /* Landing: SOS Banner */
+  .sos-banner {
+    margin: 0 4% 48px !important;
+    padding: 32px 20px !important;
+    border-radius: 24px !important;
+  }
+  .sos-banner h2 {
+    font-size: 28px !important;
+  }
+
+  /* Landing: Marquee */
+  .lp-marquee {
+    padding: 12px 0 !important;
+  }
+  .lp-marquee span {
+    margin: 0 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Safety Tips: Emergency - single column */
+  .emergency-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Safety Tips: Hero */
+  .safety-hero-section h1 {
+    font-size: 28px !important;
+  }
+
+  /* Contact: Hero */
+  .contact-hero-section h1 {
+    font-size: 28px !important;
+  }
+
+  /* Contact: Info cards - single column */
+  .contact-info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact: Form card */
+  .contact-form-card {
+    padding: 24px 20px !important;
+  }
+
+  /* Community: Extra compact */
+  .cp-container {
+    padding: 24px 12px 48px !important;
+  }
+  .cp-title {
+    font-size: 26px !important;
+  }
+  .cp-modal-overlay {
+    padding: 0 !important;
+    align-items: flex-end !important;
+  }
+  .cp-modal {
+    padding: 20px 16px !important;
+    border-radius: 20px 20px 0 0 !important;
+    max-width: 100% !important;
+  }
+  .cp-comments-panel {
+    max-height: 95vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    max-width: 100% !important;
+  }
+  .cp-filters button {
+    padding: 5px 8px !important;
+    font-size: 11px !important;
+  }
+
+  /* Map: Components */
+  .map-search {
+    top: 12px !important;
+    width: 96% !important;
+  }
+  .map-user-menu {
+    top: 12px !important;
+    right: 12px !important;
+  }
+  .map-sos-btn {
+    bottom: 16px !important;
+    left: 12px !important;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .route-panel {
+    border-radius: 16px 16px 0 0 !important;
+  }
+  .route-panel__body {
+    padding: 8px 12px 12px !important;
+  }
 }
