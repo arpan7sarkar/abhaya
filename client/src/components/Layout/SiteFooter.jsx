@@ -5,43 +5,36 @@ const productLinks = [
   { to: '/map', label: 'Live Map' },
   { to: '/map', label: 'Safety Scores' },
   { to: '/map', label: 'Emergency SOS' },
-  { to: '/#how-it-works', label: 'How it Works' },
+  { to: '/community', label: 'Community' },
 ];
 
 const companyLinks = [
-  { to: '/about', label: 'About Us' },
   { to: '/contact', label: 'Contact' },
   { to: '/safety-tips', label: 'Safety Tips' },
 ];
 
 export default function SiteFooter() {
   return (
-    <footer style={{ background: 'var(--white)', padding: '64px 8% 40px', borderTop: '1px solid var(--border)', marginTop: 'auto' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: '80px', marginBottom: '64px' }}>
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <div className="site-footer__grid">
           {/* Brand */}
-          <div>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', textDecoration: 'none' }}>
+          <div className="site-footer__brand">
+            <Link to="/" className="site-footer__logo">
               <Shield size={24} color="var(--gold)" />
-              <span className="font-garamond" style={{ fontSize: '24px', fontWeight: 700, color: 'var(--ink)' }}>Avaya</span>
+              <span className="font-garamond site-footer__logo-text">Avaya</span>
             </Link>
-            <p style={{ color: 'var(--muted)', fontSize: '15px', maxWidth: '280px', lineHeight: 1.6 }}>
+            <p className="site-footer__tagline">
               Your ultimate companion for secure, confident city travel.
             </p>
           </div>
 
           {/* Product */}
-          <div>
-            <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '20px', color: 'var(--ink)' }}>Product</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className="site-footer__col">
+            <h4 className="site-footer__col-title">Product</h4>
+            <div className="site-footer__col-links">
               {productLinks.map(({ to, label }) => (
-                <Link
-                  key={label}
-                  to={to}
-                  style={{ color: 'var(--muted)', fontSize: '14px', textDecoration: 'none', transition: 'color 0.2s' }}
-                  onMouseEnter={(e) => (e.target.style.color = 'var(--gold)')}
-                  onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
-                >
+                <Link key={label} to={to} className="site-footer__link">
                   {label}
                 </Link>
               ))}
@@ -49,17 +42,11 @@ export default function SiteFooter() {
           </div>
 
           {/* Company */}
-          <div>
-            <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '20px', color: 'var(--ink)' }}>Company</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div className="site-footer__col">
+            <h4 className="site-footer__col-title">Company</h4>
+            <div className="site-footer__col-links">
               {companyLinks.map(({ to, label }) => (
-                <Link
-                  key={label}
-                  to={to}
-                  style={{ color: 'var(--muted)', fontSize: '14px', textDecoration: 'none', transition: 'color 0.2s' }}
-                  onMouseEnter={(e) => (e.target.style.color = 'var(--gold)')}
-                  onMouseLeave={(e) => (e.target.style.color = 'var(--muted)')}
-                >
+                <Link key={label} to={to} className="site-footer__link">
                   {label}
                 </Link>
               ))}
@@ -68,9 +55,13 @@ export default function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '32px', borderTop: '1px solid var(--border)', flexWrap: 'wrap', gap: '16px' }}>
-          <div style={{ color: 'var(--muted)', fontSize: '13px' }}>© {new Date().getFullYear()} Avaya Network. All rights reserved.</div>
-          <div style={{ color: 'var(--muted)', fontSize: '13px' }}>Emergency: <strong style={{ color: '#e04040' }}>100</strong></div>
+        <div className="site-footer__bottom">
+          <div className="site-footer__copyright">
+            © {new Date().getFullYear()} Avaya Network. All rights reserved.
+          </div>
+          <div className="site-footer__emergency">
+            Emergency: <strong style={{ color: '#e04040' }}>100</strong>
+          </div>
         </div>
       </div>
     </footer>

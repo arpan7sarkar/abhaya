@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { Show, UserButton, useUser } from '@clerk/react';
@@ -8,7 +8,6 @@ const navLinks = [
   { to: '/map', label: 'Map' },
   { to: '/community', label: 'Community' },
   { to: '/safety-tips', label: 'Safety Tips' },
-  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -17,46 +16,32 @@ export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user } = useUser();
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        padding: '16px 40px',
-        background: 'rgba(255,255,255,0.92)',
-        borderBottom: '1px solid #e8e6e0',
-        backdropFilter: 'blur(12px)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
+    <>
+      <header className="site-header">
         {/* Left: Logo */}
-        <Link
-          to="/"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            textDecoration: 'none',
-            color: 'inherit',
-          }}
-        >
+        <Link to="/" className="site-header__logo">
           <Shield size={28} color="#e8a020" strokeWidth={2} />
-          <span className="font-playfair" style={{ fontWeight: 800, fontSize: '26px', color: '#141414' }}>Avaya</span>
+          <span className="font-playfair site-header__logo-text">Avaya</span>
         </Link>
 
         {/* Center: Desktop Nav Links */}
-        <nav
-          className="desktop-nav"
-          style={{
-            display: 'flex',
-            gap: '32px',
-            alignItems: 'center',
-          }}
-          aria-label="Main navigation"
-        >
+        <nav className="site-header__desktop-nav" aria-label="Main navigation">
           <Show when="signed-in">
             {navLinks.map(({ to, label }) => {
               const isActive = location.pathname === to;
@@ -64,13 +49,7 @@ export default function SiteHeader() {
                 <Link
                   key={to}
                   to={to}
-                  style={{
-                    fontSize: '15px',
-                    fontWeight: isActive ? 600 : 500,
-                    color: isActive ? '#141414' : '#6b6b6b',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s',
-                  }}
+                  className={`site-header__nav-link ${isActive ? 'site-header__nav-link--active' : ''}`}
                 >
                   {label}
                 </Link>
@@ -80,112 +59,77 @@ export default function SiteHeader() {
         </nav>
 
         {/* Right: Auth & Mobile Menu Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: '120px', justifyContent: 'flex-end' }}>
+        <div className="site-header__actions">
           <Show when="signed-out">
-            <div className="hidden sm:flex items-center gap-4">
-              <Link
-                to="/sign-in"
-                style={{
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  color: '#6b6b6b',
-                  textDecoration: 'none',
-                  transition: 'color 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <LogIn size={18} style={{ marginRight: '6px' }} />
+            <div className="site-header__auth-buttons">
+              <Link to="/sign-in" className="site-header__login-btn">
+                <LogIn size={18} />
                 Login
               </Link>
-              <Link
-                to="/sign-up"
-                style={{
-                  padding: '10px 24px',
-                  background: '#141414',
-                  color: '#ffffff',
-                  borderRadius: '12px',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <UserPlus size={18} style={{ marginRight: '6px' }} />
+              <Link to="/sign-up" className="site-header__signup-btn">
+                <UserPlus size={18} />
                 Sign Up
               </Link>
             </div>
           </Show>
           <Show when="signed-in">
-            <div style={{ background: '#f7f6f2', padding: '4px 16px 4px 4px', borderRadius: '30px', border: '1px solid #e8e6e0', display: 'flex', alignItems: 'center' }}>
+            <div className="site-header__user-pill">
               <UserButton showName={true} />
+            </div>
+            {/* On small screens, hide the name and show compact */}
+            <div className="site-header__user-pill--compact">
+              <UserButton showName={false} />
             </div>
           </Show>
 
-          {/* Mobile menu toggle (visible only on small screens via CSS) */}
+          {/* Mobile menu toggle */}
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            style={{
-              display: 'flex',
-              padding: '8px',
-              background: 'rgba(0,0,0,0.05)',
-              border: 'none',
-              borderRadius: '10px',
-              color: '#141414',
-              cursor: 'pointer',
-            }}
-            className="mobile-menu-btn"
+            className="site-header__mobile-toggle"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
+      </header>
 
-      {/* Mobile nav drawer */}
+      {/* Mobile nav overlay + drawer */}
       {mobileOpen && (
-        <div
-          className="animate-fade-in mobile-nav"
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            background: 'rgba(255,255,255,0.98)',
-            borderBottom: '1px solid #e8e6e0',
-            padding: '16px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}
-        >
-          <Show when="signed-in">
-            {navLinks.map(({ to, label }) => {
-              const isActive = location.pathname === to;
-              return (
-                <Link
-                  key={to}
-                  to={to}
-                  onClick={() => setMobileOpen(false)}
-                  style={{
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    fontSize: '15px',
-                    fontWeight: isActive ? 600 : 500,
-                    color: isActive ? '#e8a020' : '#141414',
-                    background: isActive ? '#fdf9f3' : 'transparent',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {label}
+        <>
+          <div className="site-header__overlay" onClick={() => setMobileOpen(false)} />
+          <div className="site-header__mobile-drawer animate-fade-in">
+            <Show when="signed-in">
+              {navLinks.map(({ to, label }) => {
+                const isActive = location.pathname === to;
+                return (
+                  <Link
+                    key={to}
+                    to={to}
+                    onClick={() => setMobileOpen(false)}
+                    className={`site-header__mobile-link ${isActive ? 'site-header__mobile-link--active' : ''}`}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </Show>
+            <Show when="signed-out">
+              <div className="site-header__mobile-auth">
+                <Link to="/sign-in" onClick={() => setMobileOpen(false)} className="site-header__mobile-login">
+                  <LogIn size={18} />
+                  Login
                 </Link>
-              );
-            })}
-          </Show>
-        </div>
+                <Link to="/sign-up" onClick={() => setMobileOpen(false)} className="site-header__mobile-signup">
+                  <UserPlus size={18} />
+                  Sign Up
+                </Link>
+              </div>
+            </Show>
+          </div>
+        </>
       )}
-    </header>
+    </>
   );
 }
