@@ -1,16 +1,52 @@
-# React + Vite
+# Avaya — Women Safety Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React SPA for women safety with live map, color-coded road safety overlays, safest-route routing, and emergency SOS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Landing Page** — Intro and CTA to open the map
+- **Live Map** — Leaflet map with OSM tiles, user location, nearby roads
+- **Safety Overlays** — Color-coded polylines (green/amber/red by safety score)
+- **Safest Route** — Search destination, get safest path via backend API
+- **SOS Button** — Find nearest police station, call directly
+- **Report Unsafe Road** — Report safety issues from road popups
+- **Error Boundary** — Graceful error recovery
+- **Toast Notifications** — Success/error feedback
+- **PWA Ready** — Manifest and meta tags for installability
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + Vite 7
+- Tailwind CSS v4
+- Leaflet + react-leaflet
+- Zustand
+- Axios
+- React Router
+- lucide-react
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Copy env and fill values
+cp .env.example .env
+
+# Install & run
+npm install
+npm run dev
+```
+
+Frontend: http://localhost:5173  
+Backend: http://localhost:3000 (required for map data)
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deployment
+
+- **Vercel**: `vercel.json` included for SPA routing
+- **Netlify**: Add `_redirects` with `/* /index.html 200`
+- **Static**: Configure server to serve `index.html` for all routes

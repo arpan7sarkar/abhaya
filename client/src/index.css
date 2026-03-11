@@ -1,18 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
-/* ── Avaya Design Tokens ─────────────────────────────────────────── */
-@theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
 
-  --color-panel: rgba(15, 17, 23, 0.85);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-primary: #f0f2f5;
-  --color-muted: #8a8f9e;
-  --color-accent: #e8c469;
-  --color-safe: #22c55e;
-  --color-moderate: #f59e0b;
-  --color-unsafe: #ef4444;
-  --color-sos: #dc2626;
+/* ── Avaya Design Tokens ─────────────────────────────────────────── */
+:root {
+  --bg: #fafaf8;
+  --white: #ffffff;
+  --cream: #f5f3ee;
+  --cream2: #ede9e0;
+  --ink: #0f0f0d;
+  --muted: #7a7a72;
+  --muted2: #a8a89e;
+  --gold: #c8860a;
+  --gold-light: #fdf3e0;
+  --gold-mid: #f0c060;
+  --green: #1a8f5a;
+  --green-light: #e4f5ec;
+  --red: #c93535;
+  --red-light: #fdeaea;
+  --border: #e4e0d6;
+  --border2: #ccc8be;
+}
+
+@theme {
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', serif;
 }
 
 /* ── Globals ─────────────────────────────────────────────────────── */
@@ -25,13 +36,12 @@
 }
 
 /* ── New Homepage Utilities ──────────────────────────────────────── */
-.font-playfair {
-  font-family: 'Playfair Display', serif;
+.font-garamond {
+  font-family: 'Cormorant Garamond', serif;
 }
-.font-sans {
-  font-family: 'DM Sans', system-ui, sans-serif;
+.font-outfit {
+  font-family: 'Outfit', system-ui, sans-serif;
 }
-
 .landing-wrapper {
   background-color: #fdf9f3;
   color: #141414;
@@ -49,6 +59,33 @@
   transform: translateY(-8px);
   border-top-color: #e8a020;
   box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.btn-primary-landing {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(15, 15, 13, 0.15);
+}
+.btn-primary-landing:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(15, 15, 13, 0.25);
+  background: #2a2a26 !important;
+}
+
+.btn-secondary-landing {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary-landing:hover {
+  transform: translateY(-2px);
+  background: var(--white) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.08) !important;
 }
 
 html,

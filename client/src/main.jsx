@@ -15,7 +15,6 @@ L.Icon.Default.mergeOptions({
 });
 
 import { ClerkProvider } from '@clerk/react';
-import { dark } from '@clerk/themes';
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -30,44 +29,47 @@ createRoot(document.getElementById('root')).render(
       afterSignInUrl="/"
       afterSignUpUrl="/"
       appearance={{
-        baseTheme: dark,
         layout: {
           socialButtonsPlacement: "bottom",
           socialButtonsVariant: "blockButton",
         },
         variables: {
-          colorPrimary: '#e8c469',
-          colorBackground: '#1a1c23',
-          colorInputBackground: 'rgba(255,255,255,0.03)',
-          colorInputText: '#f0f2f5',
-          colorText: '#f0f2f5',
-          colorTextSecondary: '#8a8f9e',
-          colorShimmer: 'rgba(255,255,255,0.1)',
+          colorPrimary: '#c8860a',
+          colorBackground: '#fafaf8',
+          colorInputBackground: '#f5f3ee',
+          colorInputText: '#0f0f0d',
+          colorText: '#0f0f0d',
+          colorTextSecondary: '#7a7a72',
+          colorShimmer: 'rgba(200,134,10,0.1)',
           colorDanger: '#ef4444',
           colorSuccess: '#22c55e',
-          colorWarning: '#e8c469',
+          colorWarning: '#c8860a',
           borderRadius: '16px',
         },
         elements: {
-          card: "bg-transparent shadow-none border-none p-0 w-full",
+          card: "shadow-md border border-[#ede9e0] rounded-2xl",
           rootBox: "w-full !max-w-full",
-          cardBox: "!bg-transparent !shadow-none !p-0 !overflow-hidden !w-full !mb-6",
-          userButtonAvatarBox: "w-9 h-9 border border-white/10",
+          userButtonAvatarBox: "w-9 h-9 border border-[#ede9e0]",
+          userButtonPopoverCard: "!bg-[#fafaf8] !border !border-[#ede9e0] !shadow-lg !rounded-2xl",
+          userButtonPopoverActionButton: "hover:!bg-[#f5f3ee]",
+          userButtonPopoverActionButtonText: "!text-[#0f0f0d]",
+          userButtonPopoverActionButtonIcon: "!text-[#7a7a72]",
+          userButtonPopoverFooter: "hidden",
           headerTitle: "hidden",
           headerSubtitle: "hidden",
-          formHeader: "hidden", // Hide Clerk's header completely since we have our own
-          socialButtonsBlockButton: "!bg-[rgba(255,255,255,0.03)] !border !border-white/5 hover:!bg-[rgba(255,255,255,0.08)] !text-white !rounded-xl !transition-all !duration-300 py-3",
-          socialButtonsBlockButtonText: "!text-white !font-medium !text-[15px]",
-          dividerLine: "!bg-white/10",
-          dividerText: "!text-[#8a8f9e]",
-          formFieldLabel: "!text-[#f0f2f5] !font-medium !mb-1.5",
-          formFieldInput: "!bg-[rgba(255,255,255,0.05)] !border !border-white/10 !text-white !rounded-xl focus:!border-[#e8c469] focus:!ring-1 focus:!ring-[#e8c469] !transition-all !duration-300 !py-2.5",
-          formButtonPrimary: "!bg-[#e8c469] hover:!bg-[#d4b05a] !text-[#0f1117] !font-bold !py-3 !w-full !rounded-xl !transition-all !duration-300 !shadow-[0_4px_12px_rgba(232,196,105,0.2)] !mt-2",
-          footerActionLink: "!text-[#e8c469] hover:!text-[#d4b05a] !font-semibold !transition-colors text-base",
-          footerActionText: "!text-[#8a8f9e] text-base",
-          identityPreviewText: "!text-[#f0f2f5]",
-          identityPreviewEditButtonIcon: "!text-[#e8c469]",
-          otpCodeFieldInput: "!bg-[#1a1c23] !border !border-white/5 !text-[#f0f2f5] !rounded-xl focus:!border-[#e8c469]",
+          formHeader: "hidden",
+          socialButtonsBlockButton: "!bg-[#f5f3ee] !border !border-[#ede9e0] hover:!bg-[#ede9e0] !text-[#0f0f0d] !rounded-xl !transition-all !duration-300 py-3",
+          socialButtonsBlockButtonText: "!text-[#0f0f0d] !font-medium !text-[15px]",
+          dividerLine: "!bg-[#ede9e0]",
+          dividerText: "!text-[#7a7a72]",
+          formFieldLabel: "!text-[#0f0f0d] !font-medium !mb-1.5",
+          formFieldInput: "!bg-[#f5f3ee] !border !border-[#ede9e0] !text-[#0f0f0d] !rounded-xl focus:!border-[#c8860a] focus:!ring-1 focus:!ring-[#c8860a] !transition-all !duration-300 !py-2.5",
+          formButtonPrimary: "!bg-[#0f0f0d] hover:!bg-[#2a2a28] !text-white !font-bold !py-3 !w-full !rounded-xl !transition-all !duration-300 !shadow-[0_4px_12px_rgba(0,0,0,0.1)] !mt-2",
+          footerActionLink: "!text-[#c8860a] hover:!text-[#a06e08] !font-semibold !transition-colors text-base",
+          footerActionText: "!text-[#7a7a72] text-base",
+          identityPreviewText: "!text-[#0f0f0d]",
+          identityPreviewEditButtonIcon: "!text-[#c8860a]",
+          otpCodeFieldInput: "!bg-[#f5f3ee] !border !border-[#ede9e0] !text-[#0f0f0d] !rounded-xl focus:!border-[#c8860a]",
         }
       }}
     >

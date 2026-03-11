@@ -3,7 +3,6 @@ import SearchBar from '../UI/SearchBar';
 import SafetyLegend from '../UI/SafetyLegend';
 import SOSButton from '../UI/SOSButton';
 import SOSModal from '../UI/SOSModal';
-import RoutePanel from '../UI/RoutePanel';
 import RouteSelectorPanel from '../UI/RouteSelectorPanel';
 import ReportModal from '../UI/ReportModal';
 import ErrorBanner from '../UI/ErrorBanner';
@@ -23,7 +22,6 @@ export default function AppShell({ children }) {
       <SafetyLegend />
       <SOSButton />
       <RouteSelectorPanel />
-      <RoutePanel />
 
       <SOSModal />
       <ReportModal />

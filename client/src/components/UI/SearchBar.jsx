@@ -187,31 +187,35 @@ export default function SearchBar() {
       ref={containerRef}
       style={{
         position: 'fixed',
-        top: '16px',
+        top: '20px',
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 1000,
-        width: '90%',
-        maxWidth: '440px',
+        width: '92%',
+        maxWidth: '520px',
       }}
     >
       <form onSubmit={handleSearch}>
         <div
-          className="panel-card"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '6px',
-            padding: '10px 14px',
-            borderRadius: '14px',
+            gap: '10px',
+            padding: '12px 18px',
+            borderRadius: '50px',
+            background: 'rgba(255,255,255,0.92)',
+            backdropFilter: 'blur(16px)',
+            border: '1.5px solid rgba(232,230,224,0.8)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04)',
+            transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
           }}
         >
           {loading ? (
             <div
               style={{
-                width: '16px',
-                height: '16px',
-                border: '2px solid #e8e6e0',
+                width: '18px',
+                height: '18px',
+                border: '2.5px solid #e8e6e0',
                 borderTopColor: '#e8a020',
                 borderRadius: '50%',
                 animation: 'spin-shield 0.7s linear infinite',
@@ -219,7 +223,7 @@ export default function SearchBar() {
               }}
             />
           ) : (
-            <Search size={16} color="#6b6b6b" style={{ flexShrink: 0 }} />
+            <Search size={18} color="#a8a89e" style={{ flexShrink: 0 }} />
           )}
 
           <input
@@ -234,9 +238,10 @@ export default function SearchBar() {
               border: 'none',
               outline: 'none',
               color: '#141414',
-              fontSize: '14px',
+              fontSize: '15px',
               fontWeight: 500,
               fontFamily: 'inherit',
+              letterSpacing: '-0.01em',
             }}
             aria-label="Search destination"
             autoComplete="off"
@@ -248,15 +253,16 @@ export default function SearchBar() {
               onClick={handleClear}
               aria-label="Clear"
               style={{
-                background: '#f7f6f2',
+                background: 'rgba(0,0,0,0.05)',
                 border: 'none',
-                borderRadius: '6px',
+                borderRadius: '50%',
                 color: '#6b6b6b',
                 cursor: 'pointer',
-                padding: '4px',
+                padding: '6px',
                 display: 'flex',
                 alignItems: 'center',
                 flexShrink: 0,
+                transition: 'background 0.2s ease',
               }}
             >
               <X size={14} />
@@ -270,12 +276,12 @@ export default function SearchBar() {
             aria-label="Drop destination pin on map"
             title="Drop a pin on the map"
             style={{
-              background: destination ? 'rgba(239,68,68,0.15)' : '#f7f6f2',
-              border: destination ? '1px solid rgba(239,68,68,0.3)' : '1px solid transparent',
-              borderRadius: '8px',
-              color: destination ? '#ef4444' : '#6b6b6b',
+              background: destination ? 'rgba(232,160,32,0.15)' : 'rgba(0,0,0,0.04)',
+              border: destination ? '1.5px solid rgba(232,160,32,0.4)' : '1.5px solid transparent',
+              borderRadius: '50%',
+              color: destination ? '#e8a020' : '#a8a89e',
               cursor: 'pointer',
-              padding: '6px',
+              padding: '8px',
               display: 'flex',
               alignItems: 'center',
               flexShrink: 0,
@@ -290,19 +296,21 @@ export default function SearchBar() {
             disabled={loading}
             aria-label="Search destination"
             style={{
-              background: '#141414',
+              background: 'var(--ink)',
               border: 'none',
-              borderRadius: '8px',
+              borderRadius: '50%',
               color: '#ffffff',
               cursor: loading ? 'not-allowed' : 'pointer',
-              padding: '6px 10px',
+              padding: '10px',
               display: 'flex',
               alignItems: 'center',
               fontFamily: 'inherit',
               flexShrink: 0,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
             }}
           >
-            <Search size={18} strokeWidth={2.5} color="#ffffff" />
+            <Search size={16} strokeWidth={2.5} color="#ffffff" />
           </button>
         </div>
       </form>
@@ -310,13 +318,16 @@ export default function SearchBar() {
       {/* Autocomplete suggestions dropdown */}
       {showSuggestions && suggestions.length > 0 && (
         <div
-          className="panel-card"
           style={{
-            marginTop: '6px',
-            borderRadius: '12px',
-            padding: '4px 0',
-            maxHeight: '260px',
+            marginTop: '8px',
+            borderRadius: '20px',
+            padding: '6px 0',
+            maxHeight: '280px',
             overflowY: 'auto',
+            background: 'rgba(255,255,255,0.96)',
+            backdropFilter: 'blur(16px)',
+            border: '1.5px solid rgba(232,230,224,0.8)',
+            boxShadow: '0 12px 40px rgba(0,0,0,0.1)',
           }}
         >
           {suggestions.map((item, idx) => (
